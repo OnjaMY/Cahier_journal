@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Editer un enseignant{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {{ form_start(form)}}
+        {{form_widget(form)}}
+             <button type="submit" class="btn btn-primary mt-3">
+               
+                    Enregistrer
+                
+
+             </button>
+        {{form_end(form)}}
+
+          <table class="table table-hover width">
+    <thead>
+        <tr>
+            <th scope="col">UID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Adresse mail</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    {% for enseignant in listenseignants %}
+        <tbody>
+            <tr class="table-active">
+                <td > {{enseignant.UID}} </td>
+                <td> {{enseignant.nom}} </td>
+                <td> {{enseignant.prenom}} </td>
+                <td> {{enseignant.telephone}} </td>
+                <td> {{enseignant.mail}} </td>
+                <td>
+                    <button type="submit" class="bt btn-primary"><a href="{{ path('modif_enseignant', {
+                            id: enseignant.id }) }}" style="color:white; text-decoration:none;, font-weight:bold;"> Modifier </a></button>
+                    <button type="submit" class="bt btn-primary"><a href="{{ path('delete_enseignant', {
+                            id: enseignant.id }) }}" style="color:white; text-decoration:none;, font-weight:bold;">Supprimer</a></button
+                </td>
+            </tr>
+        </tbody>
+    {% endfor %}
+</table>
+     
+    </div>
+{% endblock %}

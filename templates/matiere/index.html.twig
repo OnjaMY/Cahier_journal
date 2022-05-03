@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matiere !{% endblock %}
+
+{% block body %}
+    <div class="container">
+       <h1 >LISTE DES MATIERES</h1>
+        <button type="submit" class="btn btn-primary ml"><a href="{{path('ajout_matiere')}}" style="color:white; text-decoration:none;, font-weight:bold;">Ajouter</a></button>
+    <table class="table table-hover width">
+    <thead>
+        <tr>
+            <th scope="col">id matiere</th>
+            <th scope="col">Nom matiere</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    {% for matiere in matieres %}
+        <tbody>
+            <tr class="table-active">
+                <td > {{matiere.id}} </td>
+                <td> {{matiere.nomMatiere}} </td>
+                <td> 
+                     <button type="submit" class="btn btn-primary"><a href="{{ path('modif_matiere', {
+                            id: matiere.id }) }}" style="color:white; text-decoration:none;, font-weight:bold;">Modifier</a></button>
+                      <button type="submit" class="btn btn-primary"><a href="{{ path('delete_matiere', {
+                            id: matiere.id }) }}" style="color:white; text-decoration:none;, font-weight:bold;">Supprimer</a></button>
+                </td>
+               
+            </tr>
+        </tbody>
+    {% endfor %}
+</table>
+    </div>
+
+{% endblock %}

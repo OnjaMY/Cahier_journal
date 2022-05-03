@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cahier_journal{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+        
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">CAHIER DE JOURNAL</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                 <a class="nav-link active" href="{{path('enseignant')}}">Enseignant</a>
+                            </li>
+                            <li class="nav-item">
+                                 <a class="nav-link active" href="{{path('enseignant_create')}}">Editer Enseignant</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Editer</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{path('matiere')}}">Matière</a>
+                                    <a class="dropdown-item" href="{{path('classe')}}">Classe</a>
+                                    <a class="dropdown-item" href="{{path('niveau')}}">Niveau</a>
+                                    <a class="dropdown-item" href="{{path('cours')}}">Cours</a>
+                                </div>
+                            </li>
+                           
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+
+            {% for label, messages in app.flashes %}
+                <div class="container mt-3">
+                    <div class="alert alert-{{ label }}">
+                        {% for message in messages %}
+                            <p> {{message | raw}} </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            {# {{dump(app.flashes)}} #}
+
+        {% block body %}{% endblock %}
+        <script src="/js/jquery.min.js"></script>
+         <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+       
+    </body>
+</html>

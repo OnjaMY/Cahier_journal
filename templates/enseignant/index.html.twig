@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EnseignantController!{% endblock %}
+
+{% block body %}
+    
+     <div class="container">
+            <h1 >LISTE DES ENSEIGNANTS</h1>
+            <table class="table table-hover width">
+            <thead>
+                <tr>
+            
+                    <th scope="col">UID</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Téléphone</th>
+                    <th scope="col">Adresse mail</th>
+                </tr>
+            </thead>
+            {% for enseignant in listenseignants %}
+                <tbody>
+                    <tr class="table-active">
+                        <td > {{enseignant.UID}} </td>
+                        <td> {{enseignant.nom}} </td>
+                        <td> {{enseignant.prenom}} </td>
+                        <td> {{enseignant.telephone}} </td>
+                        <td> {{enseignant.mail}} </td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Ajout_classe {% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        {{form_start(form)}}
+        {{form_widget(form)}}
+        <button type="submit" class="btn btn-primary mt-3">
+            Enregistrer
+        </buton>
+        {{form_end(form)}}
+    </div>
+    
+{% endblock %}

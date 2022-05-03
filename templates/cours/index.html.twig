@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classe !{% endblock %}
+
+{% block body %}
+    <div class="container">
+       <h1 >LISTE DES Cours</h1>
+        <button type="submit" class="btn btn-primary ml"><a href="{{path('ajout_cours')}}" style="color:white; text-decoration:none;, font-weight:bold;">Ajouter</a></button>
+    <table class="table table-hover width">
+    <thead>
+        <tr>
+            <th scope="col">Cours</th>
+            <th scope="col">Heure début</th>
+            <th scope="col">Heure fin</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    {% for cours in course %}
+        <tbody>
+            <tr class="table-active">
+                <td > {{cours.seance}} </td>
+                <td> {{cours.heureDebut}} </td>
+                <td> {{cours.heureFin}} </td>
+                <td> 
+                     <button type="submit" class="btn btn-primary"><a href="{{ path('modif_cours', {
+                            id: cours.id }) }}" style="color:white; text-decoration:none;, font-weight:bold;">Modifier</a></button>
+                      <button type="submit" class="btn btn-primary"><a href="{{ path('delete_cours', {
+                            id: cours.id }) }}" style="color:white; text-decoration:none;, font-weight:bold;">Supprimer</a></button>
+                </td>
+               
+            </tr>
+        </tbody>
+    {% endfor %}
+</table>
+    </div>
+
+{% endblock %}
